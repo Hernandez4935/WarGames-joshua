@@ -1,0 +1,171 @@
+name: Documentation Issue
+description: Report issues with documentation or suggest documentation improvements
+title: "[DOCS] "
+labels: ["documentation"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve our documentation! Please fill out the form below.
+
+  - type: dropdown
+    id: documentation-type
+    attributes:
+      label: Documentation Type
+      description: What type of documentation is this about?
+      options:
+        - README.md
+        - API Documentation (rustdoc)
+        - Planning Documents (docs/)
+        - CONTRIBUTING.md
+        - Code Comments
+        - Examples
+        - Architecture Diagrams
+        - CHANGELOG.md
+        - Security Documentation
+        - Deployment Guides
+        - Other (please specify)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Issue Type
+      description: What kind of documentation issue is this?
+      options:
+        - Typo or grammatical error
+        - Unclear or confusing explanation
+        - Missing documentation
+        - Outdated documentation
+        - Incorrect information
+        - Missing examples
+        - Broken links
+        - Formatting issues
+        - Suggestion for improvement
+        - Other (please specify)
+    validations:
+      required: true
+
+  - type: textarea
+    id: location
+    attributes:
+      label: Documentation Location
+      description: |
+        Where is the documentation issue located?
+        Include file path, section heading, or link.
+      placeholder: |
+        File: docs/06_Architecture_and_Implementation_Guide.md
+        Section: "Risk Calculation Engine"
+        Or: https://github.com/.../blob/master/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-state
+    attributes:
+      label: Current Documentation
+      description: |
+        What does the current documentation say?
+        Quote the relevant section if possible.
+      placeholder: |
+        The current documentation states:
+        > "..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: Issue Description
+      description: |
+        Clearly describe the problem with the current documentation.
+        Why is it unclear, incorrect, or incomplete?
+      placeholder: Describe the documentation issue...
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested-improvement
+    attributes:
+      label: Suggested Improvement
+      description: |
+        How should the documentation be improved?
+        Provide specific suggestions for better wording, examples, or structure.
+      placeholder: |
+        The documentation should instead say:
+        "..."
+
+        Or add a section about:
+        "..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-examples
+    attributes:
+      label: Additional Examples
+      description: |
+        If suggesting new examples, provide them here.
+        Use code blocks (```) for formatting.
+      placeholder: |
+        ```rust
+        // Example code here
+        ```
+    validations:
+      required: false
+
+  - type: textarea
+    id: related-code
+    attributes:
+      label: Related Code
+      description: |
+        If this documentation relates to specific code, reference it here.
+        Include file paths, function names, or links.
+      placeholder: |
+        Related to: src/engines/risk_calculation.rs::calculate_risk_score()
+    validations:
+      required: false
+
+  - type: dropdown
+    id: affected-users
+    attributes:
+      label: Who is Affected?
+      description: Who would benefit most from this documentation improvement?
+      options:
+        - New users/contributors
+        - Experienced users
+        - Developers working on the codebase
+        - System administrators/operators
+        - Security researchers
+        - Everyone
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: |
+        Any other context about the documentation issue.
+        Screenshots, comparison with other projects, etc.
+      placeholder: Additional context...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm the following
+      options:
+        - label: I have checked that this documentation issue hasn't been reported
+          required: true
+        - label: I have verified this against the latest version of the documentation
+          required: true
+        - label: I have provided specific suggestions for improvement
+          required: false
+        - label: I am willing to submit a PR to fix this documentation issue
+          required: false

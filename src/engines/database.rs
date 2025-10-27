@@ -33,6 +33,7 @@ pub struct PostgresDatabase {
 
 impl PostgresDatabase {
     /// Create a new PostgreSQL database engine
+    #[allow(clippy::unused_async)]
     pub async fn new(_connection_string: &str) -> Result<Self> {
         // TODO: Initialize connection pool
         Ok(Self {})

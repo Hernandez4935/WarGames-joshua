@@ -14,6 +14,7 @@ impl ClaudeIntegrationEngine {
     }
 
     /// Analyze risk using Claude AI
+    #[allow(clippy::unused_async)]
     pub async fn analyze_risk(
         &self,
         _data: &crate::collectors::AggregatedData,

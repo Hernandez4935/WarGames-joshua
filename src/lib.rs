@@ -129,6 +129,7 @@ impl WarGamesSystem {
     ///
     /// Returns an error if configuration cannot be loaded or system
     /// initialization fails.
+    #[allow(clippy::unused_async)]
     pub async fn new() -> Result<Self> {
         let config = Config::load()?;
         tracing::info!("WarGames/JOSHUA system initialized");
@@ -149,6 +150,7 @@ impl WarGamesSystem {
     /// # Errors
     ///
     /// Returns an error if any step of the assessment pipeline fails.
+    #[allow(clippy::unused_async)]
     pub async fn run_assessment(&self) -> Result<Assessment> {
         tracing::info!("Starting nuclear risk assessment");
 

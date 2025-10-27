@@ -16,6 +16,7 @@ impl DataCollectionEngine {
     }
 
     /// Collect data from all sources
+    #[allow(clippy::unused_async)]
     pub async fn collect_all(&self) -> Result<AggregatedData> {
         let start = Instant::now();
 

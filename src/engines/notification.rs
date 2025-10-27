@@ -49,6 +49,7 @@ impl NotificationEngine {
     }
 
     /// Send a notification through all available channels
+    #[allow(clippy::unused_async)]
     pub async fn send(&self, _notification: &Notification) -> Result<()> {
         // TODO: Implement notification sending
         Ok(())

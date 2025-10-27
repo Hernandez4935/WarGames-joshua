@@ -1,0 +1,245 @@
+name: Phase Implementation
+description: Track implementation work for development phases and sprints
+title: "[PHASE] "
+labels: ["phase-implementation"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This template is for tracking implementation work across the 6-phase development roadmap.
+        See [Development Roadmap](../../docs/01_Development_Roadmap_and_Sprint_Planning.md) for details.
+
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Phase
+      description: Which development phase is this for?
+      options:
+        - "Phase 0: Foundation & Architecture (Weeks 1-4)"
+        - "Phase 1: Data Collection Engine (Weeks 5-10)"
+        - "Phase 2: Claude Analysis Engine (Weeks 11-16)"
+        - "Phase 3: Risk Calculation & Modeling (Weeks 17-22)"
+        - "Phase 4: Visualization & Reporting (Weeks 23-28)"
+        - "Phase 5: Integration & Testing (Weeks 29-34)"
+        - "Phase 6: Production Readiness (Weeks 35-40)"
+    validations:
+      required: true
+
+  - type: input
+    id: sprint
+    attributes:
+      label: Sprint Number
+      description: "Sprint number within the phase (e.g., 1.1, 1.2, 2.1, etc.)"
+      placeholder: "e.g., 1.1"
+    validations:
+      required: true
+
+  - type: textarea
+    id: sprint-goals
+    attributes:
+      label: Sprint Goals
+      description: |
+        High-level goals for this sprint.
+        What will be accomplished?
+      placeholder: |
+        - Implement RSS feed collector
+        - Add news API integration
+        - Create data deduplication algorithm
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation-tasks
+    attributes:
+      label: Implementation Tasks
+      description: |
+        Detailed checklist of tasks to complete.
+        Use GitHub task list syntax (- [ ] Task name).
+      placeholder: |
+        - [ ] Create `RssFeedCollector` struct
+        - [ ] Implement `DataCollector` trait
+        - [ ] Add unit tests for feed parsing
+        - [ ] Integrate with data collection engine
+        - [ ] Update documentation
+      value: |
+        - [ ]
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: |
+        List any dependencies on other work.
+        Link to related issues/PRs.
+      placeholder: |
+        - Depends on #123 (database schema)
+        - Requires completion of Sprint 0.2
+        - Needs API keys for testing
+    validations:
+      required: false
+
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Expected Deliverables
+      description: |
+        What concrete outputs should this sprint produce?
+      placeholder: |
+        - Functional RSS feed collector
+        - 15+ unit tests with 95% coverage
+        - Integration test demonstrating end-to-end flow
+        - Updated API documentation
+        - CHANGELOG entry
+    validations:
+      required: true
+
+  - type: textarea
+    id: success-criteria
+    attributes:
+      label: Success Criteria
+      description: |
+        How will we know this sprint is complete?
+        Define measurable criteria.
+      placeholder: |
+        - All tests passing
+        - Code coverage >= 95%
+        - Clippy warnings resolved
+        - Documentation updated
+        - Can collect data from 3+ RSS sources
+        - Performance: < 30s collection time
+    validations:
+      required: true
+
+  - type: input
+    id: estimated-duration
+    attributes:
+      label: Estimated Duration
+      description: "Estimated time to complete (e.g., 2 weeks, 40 hours)"
+      placeholder: "e.g., 2 weeks"
+    validations:
+      required: false
+
+  - type: input
+    id: target-completion
+    attributes:
+      label: Target Completion Date
+      description: "Target date for completion (YYYY-MM-DD)"
+      placeholder: "2025-11-10"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Complexity
+      description: Estimated complexity level
+      options:
+        - Low (straightforward implementation)
+        - Medium (some challenges expected)
+        - High (complex, may require research)
+        - Very High (significant unknowns)
+    validations:
+      required: false
+
+  - type: textarea
+    id: technical-approach
+    attributes:
+      label: Technical Approach
+      description: |
+        High-level description of the technical approach.
+        Architecture patterns, algorithms, libraries to use, etc.
+      placeholder: |
+        Will use `feed-rs` crate for RSS parsing.
+        Implement async collector with Tokio.
+        Store raw feed data in PostgreSQL with metadata.
+        Use caching to avoid duplicate fetches.
+    validations:
+      required: false
+
+  - type: textarea
+    id: risks-challenges
+    attributes:
+      label: Risks and Challenges
+      description: |
+        Potential risks or challenges.
+        How will they be mitigated?
+      placeholder: |
+        - Risk: RSS feeds may be rate-limited
+          Mitigation: Implement exponential backoff
+
+        - Challenge: Feed format variations
+          Mitigation: Use robust parsing library, extensive testing
+    validations:
+      required: false
+
+  - type: textarea
+    id: testing-strategy
+    attributes:
+      label: Testing Strategy
+      description: |
+        How will this work be tested?
+        Unit tests, integration tests, manual testing, etc.
+      placeholder: |
+        - Unit tests for feed parsing (using sample RSS files)
+        - Integration tests with mock HTTP server (wiremock)
+        - Manual testing with real RSS feeds
+        - Property-based tests for edge cases
+    validations:
+      required: false
+
+  - type: textarea
+    id: documentation-updates
+    attributes:
+      label: Documentation Updates Required
+      description: |
+        What documentation needs to be created or updated?
+      placeholder: |
+        - Add rustdoc for new modules
+        - Update README with RSS source configuration
+        - Add entry to CHANGELOG.md
+        - Update architecture diagram
+    validations:
+      required: false
+
+  - type: textarea
+    id: related-issues
+    attributes:
+      label: Related Issues
+      description: |
+        Link to related issues, PRs, or discussions.
+      placeholder: |
+        - Related to #45 (data collection architecture)
+        - Implements requirements from docs/03_Data_Collection...
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: Additional Notes
+      description: |
+        Any other relevant information.
+      placeholder: Additional context, references, design decisions...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: phase-checklist
+    attributes:
+      label: Phase Readiness Checklist
+      description: Pre-implementation checks
+      options:
+        - label: Previous phase/sprint requirements met
+          required: false
+        - label: Architecture design approved
+          required: false
+        - label: Dependencies identified and available
+          required: false
+        - label: Test strategy defined
+          required: false
+        - label: Success criteria measurable
+          required: false

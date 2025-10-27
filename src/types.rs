@@ -155,13 +155,16 @@ mod tests {
 
     #[test]
     fn test_confidence_level_conversion() {
-        assert_eq!(ConfidenceLevel::High.to_score(), 0.8);
+        assert!((ConfidenceLevel::High.to_score() - 0.8).abs() < f64::EPSILON);
         assert_eq!(ConfidenceLevel::from_score(0.95), ConfidenceLevel::VeryHigh);
     }
 
     #[test]
     fn test_risk_category_weights() {
-        let weights: f64 = RiskCategory::all().iter().map(|c| c.default_weight()).sum();
+        let weights: f64 = RiskCategory::all()
+            .iter()
+            .map(RiskCategory::default_weight)
+            .sum();
         assert!((weights - 1.0).abs() < 0.001);
     }
 }
