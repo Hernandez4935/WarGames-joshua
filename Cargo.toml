@@ -1,0 +1,105 @@
+[package]
+name = "wargames-joshua"
+version = "0.1.0"
+edition = "2021"
+authors = ["WarGames/JOSHUA Development Team"]
+description = "Global Thermonuclear War Risk Assessment System"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/yourusername/wargames-joshua"
+keywords = ["nuclear", "risk-assessment", "ai", "security"]
+categories = ["command-line-utilities", "science"]
+
+[[bin]]
+name = "joshua"
+path = "src/main.rs"
+
+[dependencies]
+# ┌─ Async Runtime ────────────────────────────────────────────┐
+tokio = { version = "1.35", features = ["full"] }
+async-trait = "0.1"
+
+# ┌─ HTTP Client & Server ─────────────────────────────────────┐
+reqwest = { version = "0.11", features = ["json", "rustls-tls"] }
+
+# ┌─ Serialization ────────────────────────────────────────────┐
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+
+# ┌─ Date/Time ────────────────────────────────────────────────┐
+chrono = { version = "0.4", features = ["serde"] }
+
+# ┌─ CLI ──────────────────────────────────────────────────────┐
+clap = { version = "4.4", features = ["derive", "cargo"] }
+
+# ┌─ Database ─────────────────────────────────────────────────┐
+sqlx = { version = "0.7", features = [
+    "runtime-tokio-rustls",
+    "postgres",
+    "sqlite",
+    "chrono",
+    "uuid",
+    "json",
+    "migrate"
+] }
+
+# ┌─ Caching ──────────────────────────────────────────────────┐
+redis = { version = "0.24", features = ["tokio-comp"], optional = true }
+
+# ┌─ Visualization ────────────────────────────────────────────┐
+plotters = { version = "0.3", features = ["svg_backend", "bitmap_backend"] }
+
+# ┌─ Terminal UI ──────────────────────────────────────────────┐
+ratatui = "0.25"
+crossterm = "0.27"
+
+# ┌─ Templating ───────────────────────────────────────────────┐
+handlebars = "5.1"
+
+# ┌─ Utilities ────────────────────────────────────────────────┐
+uuid = { version = "1.6", features = ["v4", "serde"] }
+anyhow = "1.0"
+thiserror = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# ┌─ Cryptography ─────────────────────────────────────────────┐
+argon2 = "0.5"
+base64 = "0.21"
+sha2 = "0.10"
+
+# ┌─ Statistics ───────────────────────────────────────────────┐
+statrs = "0.16"
+ndarray = "0.15"
+
+# ┌─ Parallelism ──────────────────────────────────────────────┐
+rayon = "1.8"
+
+# ┌─ Additional utilities ─────────────────────────────────────┐
+regex = "1.10"
+parking_lot = "0.12"
+
+[dev-dependencies]
+proptest = "1.4"
+criterion = "0.5"
+mockall = "0.12"
+wiremock = "0.6"
+tokio-test = "0.4"
+
+[features]
+default = []
+redis-cache = ["redis"]
+
+[[bench]]
+name = "risk_calculation"
+harness = false
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+[profile.dev]
+opt-level = 0
+debug = true

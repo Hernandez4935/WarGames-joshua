@@ -1,0 +1,54 @@
+# WarGames/JOSHUA Default Configuration
+
+[general]
+app_name = "WarGames/JOSHUA"
+version = "0.1.0"
+default_assessment_interval = "monthly"  # daily, weekly, monthly, custom
+data_retention_months = 60
+
+[claude_api]
+api_key_env = "ANTHROPIC_API_KEY"  # Environment variable name
+model = "claude-sonnet-4-20250514"
+max_tokens = 8000
+temperature = 0.3
+timeout_seconds = 120
+max_retries = 3
+
+[data_collection]
+parallel_collectors = 10
+timeout_per_source = 30
+cache_duration_hours = 6
+deduplication_threshold = 0.85
+
+[risk_calculation.weights]
+arsenal_changes = 0.15
+doctrine_changes = 0.15
+regional_conflicts = 0.20
+leadership_rhetoric = 0.10
+technical_incidents = 0.15
+communication_breakdown = 0.10
+emerging_technology = 0.10
+economic_factors = 0.05
+
+[risk_calculation.thresholds]
+critical = 100    # Seconds to midnight
+severe = 200
+high = 400
+moderate = 600
+low = 900
+
+[database]
+db_type = "postgresql"  # sqlite, postgresql
+connection_string = "postgresql://user:pass@localhost:5432/wargames"
+pool_size = 10
+
+[notifications]
+enable_webhook = false
+webhook_url = ""
+alert_on_critical = true
+alert_on_trend_change = true
+minimum_change_percentage = 10.0
+
+[logging]
+level = "info"  # trace, debug, info, warn, error
+format = "text"  # text, json
