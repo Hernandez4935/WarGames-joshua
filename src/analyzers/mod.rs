@@ -4,6 +4,19 @@ use crate::collectors::AggregatedData;
 use crate::prelude::*;
 use async_trait::async_trait;
 
+// Module exports
+pub mod claude_client;
+pub mod claude_models;
+pub mod consensus;
+pub mod prompt_builder;
+pub mod response_parser;
+
+pub use claude_client::{ClaudeClient, ClaudeConfig};
+pub use claude_models::{MessageRequest, MessageResponse};
+pub use consensus::{ConsensusAnalysis, ConsensusAnalyzer, ConsensusConfig};
+pub use prompt_builder::PromptBuilder;
+pub use response_parser::{ClaudeRiskAnalysis, ResponseParser};
+
 /// Trait for risk analysis components
 #[async_trait]
 pub trait RiskAnalyzer: Send + Sync {

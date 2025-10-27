@@ -23,9 +23,11 @@ impl DataCollectionEngine {
         // TODO: Implement parallel collection from all registered collectors
         // This is a Phase 0 stub
 
+        let now = Utc::now();
         Ok(AggregatedData {
             data_points: Vec::new(),
-            collection_timestamp: Utc::now(),
+            collection_start: now,
+            collection_end: now,
             sources_count: 0,
             failed_sources: Vec::new(),
             collection_duration: start.elapsed(),

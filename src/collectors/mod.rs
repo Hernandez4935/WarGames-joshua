@@ -45,8 +45,11 @@ pub struct AggregatedData {
     /// All collected data points
     pub data_points: Vec<DataPoint>,
 
-    /// Collection timestamp
-    pub collection_timestamp: DateTime<Utc>,
+    /// Collection start time
+    pub collection_start: DateTime<Utc>,
+
+    /// Collection end time
+    pub collection_end: DateTime<Utc>,
 
     /// Number of sources that successfully collected
     pub sources_count: usize,
@@ -56,6 +59,25 @@ pub struct AggregatedData {
 
     /// Total collection duration
     pub collection_duration: Duration,
+}
+
+impl AggregatedData {
+    /// Create a new aggregated data collection
+    pub fn new(
+        data_points: Vec<DataPoint>,
+        sources_count: usize,
+        failed_sources: Vec<String>,
+    ) -> Self {
+        let now = Utc::now();
+        Self {
+            data_points,
+            collection_start: now,
+            collection_end: now,
+            sources_count,
+            failed_sources,
+            collection_duration: Duration::from_secs(0),
+        }
+    }
 }
 
 impl AggregatedData {
@@ -84,17 +106,15 @@ mod tests {
 
     #[test]
     fn test_aggregated_data_filtering() {
-        let data = AggregatedData {
-            data_points: vec![DataPoint::new(
+        let data = AggregatedData::new(
+            vec![DataPoint::new(
                 "Test".to_string(),
                 "content".to_string(),
                 DataCategory::NewsMedia,
             )],
-            collection_timestamp: Utc::now(),
-            sources_count: 1,
-            failed_sources: Vec::new(),
-            collection_duration: Duration::from_secs(1),
-        };
+            1,
+            Vec::new(),
+        );
 
         let filtered = data.filter_by_category(DataCategory::NewsMedia);
         assert_eq!(filtered.len(), 1);

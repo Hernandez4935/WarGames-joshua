@@ -80,6 +80,9 @@ rayon = "1.8"
 regex = "1.10"
 parking_lot = "0.12"
 
+# ┌─ Token counting (optional, for future enhancement) ───────┐
+# tiktoken-rs = "0.5"
+
 [dev-dependencies]
 proptest = "1.4"
 criterion = "0.5"
