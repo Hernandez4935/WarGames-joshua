@@ -87,13 +87,13 @@ impl RiskCategory {
     /// Get default weight for this category
     pub fn default_weight(&self) -> f64 {
         match self {
-            RiskCategory::NuclearArsenalChanges => 0.15,
-            RiskCategory::ArmsControlBreakdown => 0.15,
             RiskCategory::RegionalConflicts => 0.20,
-            RiskCategory::LeadershipInstability => 0.10,
-            RiskCategory::TechnicalIncidents => 0.15,
-            RiskCategory::CommunicationFailures => 0.10,
-            RiskCategory::EmergingTechRisks => 0.10,
+            RiskCategory::NuclearArsenalChanges
+            | RiskCategory::ArmsControlBreakdown
+            | RiskCategory::TechnicalIncidents => 0.15,
+            RiskCategory::LeadershipInstability
+            | RiskCategory::CommunicationFailures
+            | RiskCategory::EmergingTechRisks => 0.10,
             RiskCategory::EconomicPressure => 0.05,
         }
     }

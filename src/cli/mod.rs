@@ -78,7 +78,7 @@ pub enum Commands {
         iterations: usize,
     },
 
-    /// Interactive terminal mode (WarGames style)
+    /// Interactive terminal mode (`WarGames` style)
     Interactive,
 
     /// System diagnostics and health check
@@ -94,6 +94,7 @@ pub enum Commands {
 
 impl Cli {
     /// Parse CLI arguments
+    #[must_use]
     pub fn parse_args() -> Self {
         Self::parse()
     }

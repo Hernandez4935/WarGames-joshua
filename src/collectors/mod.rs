@@ -1,8 +1,12 @@
 //! Data collectors for gathering information from various sources.
 
+pub mod base;
+
 use crate::prelude::*;
 use async_trait::async_trait;
 use std::time::Duration;
+
+pub use base::BaseCollector;
 
 /// Core trait for all data collection sources
 #[async_trait]

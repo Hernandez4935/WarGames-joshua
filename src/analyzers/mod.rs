@@ -46,6 +46,7 @@ pub struct RiskAnalysis {
 
 impl RiskAnalysis {
     /// Create a new risk analysis
+    #[must_use]
     pub fn new(category: RiskCategory) -> Self {
         Self {
             category,

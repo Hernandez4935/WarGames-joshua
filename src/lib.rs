@@ -123,7 +123,7 @@ pub struct WarGamesSystem {
 }
 
 impl WarGamesSystem {
-    /// Create a new WarGames system instance
+    /// Create a new `WarGames` system instance
     ///
     /// # Errors
     ///
