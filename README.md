@@ -345,7 +345,7 @@ Complete documentation suite with **25,769 lines** across 16 core documents:
 ```
 ╔═══════════════════════════════════════════════════════════════════════╗
 ║                      CLI Entry Point (main.rs)                        ║
-║   joshua assess | history | trends | simulate | interactive | ...    ║
+║   joshua assess | history | trends | simulate | interactive | ...     ║
 ╚═════════════════════════════╤═════════════════════════════════════════╝
                               │
                   ┌───────────▼──────────┐
@@ -355,12 +355,12 @@ Complete documentation suite with **25,769 lines** across 16 core documents:
                               │
           ┌───────────────────┼───────────────────┐
           │                   │                   │
-  ┏━━━━━━━▼━━━━━━━┓   ┏━━━━━━▼━━━━━━━┓   ┏━━━━━━▼━━━━━━━┓
+  ┏━━━━━━━▼━━━━━━━┓   ┏━━━━━━▼━━━━━━━━┓   ┏━━━━━━▼━━━━━━━━┓
   ┃  Data         ┃   ┃  Claude       ┃   ┃  Risk         ┃
   ┃  Collection   ┃───┃  Analysis     ┃───┃  Calculation  ┃
   ┃  Engine       ┃   ┃  Engine       ┃   ┃  Engine       ┃
   ┗━━━━━━━┬━━━━━━━┛   ┗━━━━━━━━━━━━━━━┛   ┗━━━━━━━┬━━━━━━━┛
-          │                                        │
+          │                                       │
           │          ┏━━━━━━━━━━━━━━━┓            │
           └──────────┃   Database    ┃◀───────────┘
                      ┃   Engine      ┃
