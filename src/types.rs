@@ -35,6 +35,11 @@ impl ConfidenceLevel {
         }
     }
 
+    /// Alias for to_score
+    pub fn to_numeric(&self) -> f64 {
+        self.to_score()
+    }
+
     /// Convert numeric score to confidence level
     pub fn from_score(score: f64) -> Self {
         match score {
@@ -50,8 +55,8 @@ impl ConfidenceLevel {
 /// Trend direction enumeration
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum TrendDirection {
-    Increasing,
-    Decreasing,
+    Improving,
+    Deteriorating,
     Stable,
     Uncertain,
 }
@@ -60,12 +65,17 @@ pub enum TrendDirection {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum RiskCategory {
     NuclearArsenalChanges,
+    DoctrineAndPosture,
     ArmsControlBreakdown,
     RegionalConflicts,
+    LeadershipAndRhetoric,
     LeadershipInstability,
     TechnicalIncidents,
+    CommunicationBreakdown,
     CommunicationFailures,
+    EmergingTechnology,
     EmergingTechRisks,
+    EconomicFactors,
     EconomicPressure,
 }
 
@@ -89,12 +99,17 @@ impl RiskCategory {
         match self {
             RiskCategory::RegionalConflicts => 0.20,
             RiskCategory::NuclearArsenalChanges
+            | RiskCategory::DoctrineAndPosture
             | RiskCategory::ArmsControlBreakdown
             | RiskCategory::TechnicalIncidents => 0.15,
             RiskCategory::LeadershipInstability
+            | RiskCategory::LeadershipAndRhetoric
+            | RiskCategory::CommunicationBreakdown
             | RiskCategory::CommunicationFailures
+            | RiskCategory::EmergingTechnology
             | RiskCategory::EmergingTechRisks => 0.10,
-            RiskCategory::EconomicPressure => 0.05,
+            RiskCategory::EconomicFactors
+            | RiskCategory::EconomicPressure => 0.05,
         }
     }
 }

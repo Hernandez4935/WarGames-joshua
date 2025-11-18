@@ -61,6 +61,10 @@ pub enum Error {
     #[error("Risk calculation error: {0}")]
     RiskCalculation(String),
 
+    /// Calculation error (general mathematical/statistical)
+    #[error("Calculation error: {0}")]
+    Calculation(String),
+
     /// Analysis error
     #[error("Analysis error: {0}")]
     Analysis(String),
