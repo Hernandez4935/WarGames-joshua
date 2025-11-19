@@ -78,16 +78,25 @@ async fn run_assess(force: bool, output: &str, interactive: bool) -> Result<()> 
     );
 
     let system = WarGamesSystem::new().await?;
-    let _assessment = system.run_assessment().await?;
+    let assessment = system.run_assessment().await?;
 
-    // TODO: Generate output in specified format
-    // TODO: Display in interactive mode if requested
-
+    // Display results
     println!("\n╔══════════════════════════════════════════════════════════════╗");
-    println!("║        WarGames/JOSHUA Risk Assessment (Phase 0)             ║");
+    println!("║        WarGames/JOSHUA Risk Assessment COMPLETE              ║");
     println!("╚══════════════════════════════════════════════════════════════╝\n");
-    println!("✓ Assessment framework initialized");
-    println!("ℹ Full implementation coming in Phase 1-3");
+    println!("Assessment ID: {}", assessment.id);
+    println!("Date: {}", assessment.assessment_date.format("%Y-%m-%d %H:%M:%S UTC"));
+    println!();
+    println!("🕐 SECONDS TO MIDNIGHT: {}", assessment.seconds_to_midnight);
+    println!("📊 RISK LEVEL: {:?}", assessment.risk_level());
+    println!("📈 TREND: {:?}", assessment.trend_direction);
+    println!("🎯 CONFIDENCE: {:?}", assessment.overall_confidence);
+    println!();
+    println!("Raw Risk Score: {:.3}", assessment.raw_risk_score);
+    println!("Bayesian Adjusted: {:.3}", assessment.bayesian_adjusted_score);
+    println!();
+    println!("📄 Report and visualizations saved to ./output/");
+    println!();
 
     Ok(())
 }

@@ -266,9 +266,9 @@ impl ClaudeIntegrationEngine {
 
             // Set trend direction
             assessment.trend_direction = if delta < -10 {
-                TrendDirection::Increasing
+                TrendDirection::Deteriorating
             } else if delta > 10 {
-                TrendDirection::Decreasing
+                TrendDirection::Improving
             } else {
                 TrendDirection::Stable
             };

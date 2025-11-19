@@ -289,7 +289,7 @@ mod tests {
         let json = r#"{
             "seconds_to_midnight": 90,
             "confidence_level": "High",
-            "trend_direction": "Increasing",
+            "trend_direction": "Deteriorating",
             "risk_factors": {
                 "nuclear_arsenal_changes": 0.75,
                 "arms_control_breakdown": 0.80,
@@ -317,7 +317,7 @@ mod tests {
     #[test]
     fn test_validate_invalid_seconds() {
         let parser = ResponseParser::new();
-        let mut analysis = ClaudeRiskAnalysis {
+        let analysis = ClaudeRiskAnalysis {
             seconds_to_midnight: 2000, // Invalid: > 1440
             confidence_level: ConfidenceLevel::High,
             trend_direction: TrendDirection::Stable,

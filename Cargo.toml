@@ -79,6 +79,8 @@ rayon = "1.8"
 # ┌─ Additional utilities ─────────────────────────────────────┐
 regex = "1.10"
 parking_lot = "0.12"
+dirs = "6.0"
+rand = "0.8"
 
 # ┌─ Token counting (optional, for future enhancement) ───────┐
 # tiktoken-rs = "0.5"
