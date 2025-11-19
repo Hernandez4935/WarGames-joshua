@@ -71,6 +71,7 @@ use tracing::{info, warn};
 /// risk calculation, visualization, and reporting.
 pub struct WarGamesSystem {
     config: Config,
+    #[allow(dead_code)] // Will be used when live data collection is enabled
     data_collector: DataCollectionEngine,
     risk_calculator: RiskCalculationEngine,
     visualizer: VisualizationEngine,
