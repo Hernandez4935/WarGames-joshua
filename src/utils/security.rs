@@ -44,7 +44,7 @@ impl SecurityManager {
         let argon2 = Argon2::default();
 
         // Derive encryption key from password
-        let password_hash = argon2
+        let _password_hash = argon2
             .hash_password(master_password.as_bytes(), &salt)
             .map_err(|e| Error::Calculation(format!("Password hashing failed: {}", e)))?;
 
