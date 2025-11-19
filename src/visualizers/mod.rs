@@ -2,7 +2,6 @@
 
 use crate::prelude::*;
 use plotters::prelude::*;
-use std::f64::consts::PI;
 use std::path::PathBuf;
 
 /// Trait for visualization generation

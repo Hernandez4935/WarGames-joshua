@@ -172,16 +172,36 @@ impl WarGamesSystem {
 
     /// Collect data from all configured sources
     async fn collect_data(&self) -> Result<AggregatedData> {
-        // For now, return mock data
+        // For now, return realistic mock data for testing purposes
         // TODO: Implement actual data collection in production
-        let now = Utc::now();
+        let start = Utc::now() - chrono::Duration::seconds(10);
+        let end = Utc::now();
         Ok(AggregatedData {
-            data_points: Vec::new(),
-            collection_start: now,
-            collection_end: now,
-            sources_count: 0,
-            failed_sources: Vec::new(),
-            collection_duration: std::time::Duration::from_secs(0),
+            data_points: vec![
+                DataPoint {
+                    source: "SatelliteFeed".to_string(),
+                    timestamp: start + chrono::Duration::seconds(2),
+                    value: 0.78,
+                    description: Some("Detected increased military activity".to_string()),
+                },
+                DataPoint {
+                    source: "NewsAPI".to_string(),
+                    timestamp: start + chrono::Duration::seconds(5),
+                    value: 0.65,
+                    description: Some("Reported nuclear rhetoric escalation".to_string()),
+                },
+                DataPoint {
+                    source: "SocialMedia".to_string(),
+                    timestamp: start + chrono::Duration::seconds(7),
+                    value: 0.55,
+                    description: Some("Trending topic: nuclear threat".to_string()),
+                },
+            ],
+            collection_start: start,
+            collection_end: end,
+            sources_count: 3,
+            failed_sources: vec!["GovAPI".to_string()],
+            collection_duration: std::time::Duration::from_secs((end - start).num_seconds() as u64),
         })
     }
 
@@ -243,7 +263,7 @@ impl WarGamesSystem {
             seconds_to_midnight: risk_result.seconds_to_midnight,
             raw_risk_score: risk_result.raw_score,
             bayesian_adjusted_score: risk_result.bayesian_score,
-            overall_confidence: ConfidenceLevel::Moderate,
+            overall_confidence: ConfidenceLevel::Moderate, // TODO: Calculate this dynamically
             trend_direction: risk_result.trend_direction,
             trend_magnitude: 0.0,
             delta_from_previous: None,
