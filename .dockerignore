@@ -1,0 +1,59 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Build artifacts
+target/
+**/*.rs.bk
+*.pdb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Documentation (not needed in container)
+docs/
+ref-docs/
+to-dos/
+*.md
+!README.md
+
+# Test and development
+tests/fixtures/
+benches/
+.env
+.env.*
+
+# Output and logs (will be mounted as volumes)
+output/
+logs/
+database/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Package managers
+node_modules/
+.npm/
+.yarn/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Security
+*.key
+*.pem
+*.cert
+.keyring

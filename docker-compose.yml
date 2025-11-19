@@ -1,0 +1,132 @@
+# WarGames/JOSHUA Docker Compose Configuration
+# Version: 1.0.0
+
+version: '3.8'
+
+services:
+  joshua:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wargames-joshua
+    restart: unless-stopped
+
+    # Environment variables
+    environment:
+      - RUST_LOG=info
+      - WARGAMES_CONFIG_DIR=/data/config
+      - WARGAMES_OUTPUT_DIR=/output
+      - WARGAMES_LOG_DIR=/logs
+      - DATABASE_URL=postgresql://joshua:joshua_password@postgres:5432/joshua
+
+    # Volumes for persistent data
+    volumes:
+      - ./config:/data/config:ro
+      - ./output:/output
+      - ./logs:/logs
+      - joshua-data:/data
+
+    # Depends on PostgreSQL
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+    # Networks
+    networks:
+      - joshua-network
+
+    # Health check
+    healthcheck:
+      test: ["CMD", "/app/joshua", "diagnose"]
+      interval: 5m
+      timeout: 30s
+      retries: 3
+      start_period: 10s
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: wargames-postgres
+    restart: unless-stopped
+
+    # Environment variables
+    environment:
+      - POSTGRES_DB=joshua
+      - POSTGRES_USER=joshua
+      - POSTGRES_PASSWORD=joshua_password
+      - PGDATA=/var/lib/postgresql/data/pgdata
+
+    # Volumes for persistent data
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./migrations:/docker-entrypoint-initdb.d:ro
+
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+
+    # Networks
+    networks:
+      - joshua-network
+
+    # Health check
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U joshua"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+    # Expose port (internal only)
+    expose:
+      - "5432"
+
+  # Optional: Redis for caching (if redis-cache feature is enabled)
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: wargames-redis
+  #   restart: unless-stopped
+  #
+  #   command: redis-server --appendonly yes
+  #
+  #   volumes:
+  #     - redis-data:/data
+  #
+  #   networks:
+  #     - joshua-network
+  #
+  #   healthcheck:
+  #     test: ["CMD", "redis-cli", "ping"]
+  #     interval: 10s
+  #     timeout: 3s
+  #     retries: 5
+  #
+  #   expose:
+  #     - "6379"
+
+networks:
+  joshua-network:
+    driver: bridge
+
+volumes:
+  joshua-data:
+    driver: local
+  postgres-data:
+    driver: local
+  # redis-data:
+  #   driver: local
